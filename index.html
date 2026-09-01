@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SUREHSOT PREDICITON</title>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2096814330914477');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2096814330914477&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<meta name="theme-color" content="#0b0710">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --tg:#29a9eb;
+  --tg-dark:#1c8fcc;
+  --violet:#8b5cf6;
+  --pink:#ff4fa3;
+  --pink-dark:#e0448a;
+  --ink:#f0edf5;
+  --muted:#8f84a3;
+  --line:#2a2235;
+  --green:#10b981;
+}
+html,body{
+  background:#0b0710;
+  min-height:100dvh;
+  font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+  color:var(--ink);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px 16px;
+  position:relative;
+}
+
+/* ─── ANIMATED DOT BACKGROUND ─── */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  z-index:0;
+  background-image:radial-gradient(circle at center, rgba(255,255,255,0.07) 1.5px, transparent 1.5px);
+  background-size:40px 40px;
+  pointer-events:none;
+  animation:drift 25s linear infinite;
+}
+@keyframes drift{
+  0%{background-position:0 0;}
+  100%{background-position:40px 40px;}
+}
+
+.wrap{
+  width:100%;
+  max-width:408px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:20px;
+  animation:rise .6s cubic-bezier(.16,1,.3,1) both;
+  position:relative;
+  z-index:1;
+}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* CREST */
+.crest{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:1.5px;
+  color:var(--tg-dark);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:8px 16px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,0.02);
+}
+.crest .dot{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--tg);
+  box-shadow:0 0 8px var(--tg);
+  animation:blink 1.6s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* EMBLEM */
+.emblem{position:relative;width:118px;height:118px}
+.halo{position:absolute;inset:-16px;border-radius:50%;
+  background:conic-gradient(from 90deg,var(--tg),var(--violet),var(--pink),var(--tg));
+  filter:blur(18px);opacity:.5;animation:spin 8s linear infinite}
+.ring{position:absolute;inset:0;border-radius:50%;padding:4px;
+  background:conic-gradient(from 0deg,var(--tg),var(--violet),var(--pink),var(--tg));
+  animation:spin 5s linear infinite;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude}
+.face{position:absolute;inset:7px;border-radius:50%;z-index:2;
+  background:#1a1525 center/cover no-repeat;border:3px solid #1a1525;
+  box-shadow:0 4px 18px rgba(0,0,0,.6)}
+.pulse{position:absolute;inset:0;border-radius:50%;border:1.5px solid var(--tg);
+  opacity:0;animation:pulse 2.6s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.9);opacity:.55}100%{transform:scale(1.5);opacity:0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* CHANNEL TITLE */
+.channel-title{
+  font-family:'Sora',sans-serif;
+  font-size:30px;
+  font-weight:800;
+  letter-spacing:-0.5px;
+  color:#ffffff;
+  line-height:1.2;
+  margin-bottom:2px;
+}
+.channel-title span{color:var(--tg);}
+
+/* ─── BIGGER MAIN CTA BUTTON ─── */
+.cta{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  width:100%;
+  cursor:pointer;
+  text-decoration:none;
+  background:var(--tg);
+  color:#ffffff;
+  padding:20px 16px; /* bigger */
+  border-radius:16px;
+  font-family:'Sora',sans-serif;
+  font-weight:700;
+  font-size:17px; /* bigger */
+  letter-spacing:.3px;
+  box-shadow:0 16px 36px rgba(41,169,235,.40);
+  transition:transform .12s ease,box-shadow .2s ease,background .2s ease;
+}
+.cta:active{transform:scale(.97)}
+.cta:hover{background:var(--tg-dark)}
+.cta .tg-ico{flex:0 0 auto;width:22px;height:22px;display:block}
+.cta .arrow{transition:transform .2s ease;font-weight:700}
+.cta:hover .arrow{transform:translateX(3px)}
+
+/* ─── PINK SECONDARY BUTTON ─── */
+.cta.pink{
+  background:var(--pink);
+  box-shadow:0 16px 36px rgba(255,79,163,.40);
+}
+.cta.pink:hover{
+  background:var(--pink-dark);
+}
+
+/* STATUS COUNTDOWN */
+.status{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  letter-spacing:.5px;
+  color:var(--muted);
+  margin-top:-6px;
+}
+.status b{color:var(--tg-dark);font-weight:600}
+
+/* FEATURES GRID */
+.features-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  width:100%;
+  margin:4px 0 2px;
+}
+.feature-item{
+  background:rgba(255,255,255,0.03);
+  border-radius:12px;
+  padding:14px 10px;
+  font-size:13px;
+  font-weight:600;
+  color:#e8e2ed;
+  border:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+.feature-item .ico{font-size:18px;line-height:1;}
+
+/* ─── RECENT WINS FEED ─── */
+.wins-section{
+  width:100%;
+  background:rgba(255,255,255,0.02);
+  border-radius:14px;
+  padding:14px 16px;
+  border:1px solid var(--line);
+  text-align:left;
+  margin:2px 0 4px;
+  min-height:220px;
+}
+.wins-section .win-title{
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.8px;
+  color:var(--muted);
+  margin-bottom:10px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.wins-section .win-title .live-dot{
+  display:inline-block;
+  width:6px;
+  height:6px;
+  background:#ff4fa3;
+  border-radius:50%;
+  animation:blink 1.4s infinite;
+}
+#winFeed{
+  display:flex;
+  flex-direction:column;
+  max-height:180px;
+  overflow:hidden;
+  position:relative;
+}
+.win-line{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:6px 0;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  font-size:13px;
+  font-weight:500;
+  color:#e8e2ed;
+  animation:slideIn .4s ease both;
+}
+.win-line:last-child{border-bottom:0;}
+@keyframes slideIn{
+  0%{opacity:0;transform:translateY(-10px);}
+  100%{opacity:1;transform:translateY(0);}
+}
+.win-line .check{color:var(--green);font-weight:700;font-size:15px;}
+.win-line .name{font-weight:600;}
+.win-line .amount{color:var(--tg);font-weight:700;margin-left:auto;}
+
+/* LEGAL – ONLY PRIVACY POLICY */
+.legal{width:100%;display:flex;flex-direction:column}
+.legal details{border-top:1px solid var(--line)}
+.legal summary{
+  list-style:none;
+  cursor:pointer;
+  padding:14px 4px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.1px;
+  color:var(--muted);
+}
+.legal summary::-webkit-details-marker{display:none}
+.legal summary .plus{
+  font-size:16px;
+  color:var(--tg);
+  transition:transform .2s ease;
+  flex:0 0 auto;
+}
+.legal details[open] summary .plus{transform:rotate(45deg)}
+.legal details[open] summary{color:var(--ink)}
+.legal .body{
+  padding:0 4px 16px;
+  font-size:12.5px;
+  line-height:1.65;
+  color:var(--muted);
+  text-align:left;
+}
+.legal .body ul{padding-left:18px;margin-top:6px}
+.legal .body li{margin-bottom:5px}
+.legal .body strong{color:var(--ink)}
+
+.credit{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  letter-spacing:.5px;
+  color:var(--muted);
+  opacity:.7;
+}
+
+/* RESPONSIVE */
+@media (max-width:380px){
+  .features-grid{grid-template-columns:1fr 1fr;gap:8px;}
+  .feature-item{font-size:12px;padding:12px 8px;}
+  .channel-title{font-size:24px;}
+  .wins-section{min-height:180px;}
+  .cta{font-size:15px;padding:18px 14px;}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <!-- CREST -->
+  <p class="crest"><span class="dot"></span> SUREHSOT Official</p>
+
+  <!-- EMBLEM (Vasu photo) -->
+  <div class="emblem">
+    <div class="halo"></div>
+    <div class="pulse"></div>
+    <div class="ring"></div>
+    <div class="face" style="background-image:url('vasu.jpg')"
+         role="img" aria-label="Vasu"></div>
+  </div>
+
+  <!-- CHANNEL NAME (exactly as you typed) -->
+  <div class="channel-title">SUREHSOT <span>PREDICITON</span></div>
+
+  <!-- ─── BIGGER MAIN BUTTON ─── -->
+  <a class="cta" id="joinBtn" href="https://t.me/+xlztYI0QRoJiOTY1" rel="noopener">
+    <svg class="tg-ico" viewBox="0 0 240 240" aria-hidden="true">
+      <path fill="#ffffff" d="M180.9 63.3 154.6 189c-2 8.9-7.2 11.1-14.6 6.9l-40.3-29.7-19.5 18.7c-2.1 2.1-4 4-8.1 4l2.9-41.1 74.8-67.6c3.3-2.9-.7-4.5-5-1.6l-92.4 58.2-39.8-12.4c-8.7-2.7-8.8-8.7 1.8-12.9l155.8-60c7.2-2.7 13.5 1.7 11.2 12.8Z"/>
+    </svg>
+    𝐉𝐨𝐢𝐧 𝐓𝐞𝐥𝐞𝐠𝐫𝐚𝐦 𝐂𝐨𝐦𝐦𝐮𝐧𝐢𝐭𝐲
+    <span class="arrow" aria-hidden="true">→</span>
+  </a>
+
+  <!-- COUNTDOWN (60 SECONDS) -->
+  <p class="status">Redirecting in <b id="seconds">60</b> seconds…</p>
+
+  <!-- FEATURES GRID -->
+  <div class="features-grid">
+    <div class="feature-item"><span class="ico">🏆</span> Best Sureshot</div>
+    <div class="feature-item"><span class="ico">👑</span> 10k+ Members</div>
+    <div class="feature-item"><span class="ico">📈</span> Daily Tips</div>
+    <div class="feature-item"><span class="ico">⚡</span> Free Access</div>
+  </div>
+
+  <!-- RECENT WINS FEED -->
+  <div class="wins-section">
+    <div class="win-title"><span class="live-dot"></span> Recent Wins</div>
+    <div id="winFeed"></div>
+  </div>
+
+  <!-- ─── SECONDARY PINK BUTTON (at the bottom) ─── -->
+  <a class="cta pink" href="https://t.me/+xlztYI0QRoJiOTY1" rel="noopener">
+    <svg class="tg-ico" viewBox="0 0 240 240" aria-hidden="true">
+      <path fill="#ffffff" d="M180.9 63.3 154.6 189c-2 8.9-7.2 11.1-14.6 6.9l-40.3-29.7-19.5 18.7c-2.1 2.1-4 4-8.1 4l2.9-41.1 74.8-67.6c3.3-2.9-.7-4.5-5-1.6l-92.4 58.2-39.8-12.4c-8.7-2.7-8.8-8.7 1.8-12.9l155.8-60c7.2-2.7 13.5 1.7 11.2 12.8Z"/>
+    </svg>
+    𝐉𝐨𝐢𝐧 𝐓𝐞𝐥𝐞𝐠𝐫𝐚𝐦 𝐂𝐨𝐦𝐦𝐮𝐧𝐢𝐭𝐲
+  </a>
+
+  <!-- LEGAL: ONLY PRIVACY POLICY -->
+  <div class="legal">
+    <details>
+      <summary>Privacy Policy <span class="plus">+</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>What we collect:</strong> your IP address, browser/device info, and ad click IDs (such as <code>fbclid</code>) when you land on this page.</li>
+          <li><strong>Why:</strong> to measure ad performance and confirm this page loaded correctly for the campaign that sent you here.</li>
+          <li><strong>Sharing:</strong> event data is shared with Meta (Facebook/Instagram) for ad measurement. It is not sold to other third parties.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- FOOTER -->
+  <p class="credit">Powered by RI</p>
+</div>
+
+<script>
+  // ─── 60‑SECOND REDIRECT ──────────────────────────────
+  (function() {
+    const LINK = 'https://t.me/+xlztYI0QRoJiOTY1';
+    let seconds = 260;
+    const el = document.getElementById('seconds');
+    if (!el) return;
+    const timer = setInterval(function() {
+      seconds--;
+      el.textContent = seconds;
+      if (seconds <= 0) {
+        clearInterval(timer);
+        window.location.href = LINK;
+      }
+    }, 1000);
+  })();
+
+  // ─── DYNAMIC RECENT WINS (32 NAMES, ONE BY ONE) ───
+  (function() {
+    const feed = document.getElementById('winFeed');
+    if (!feed) return;
+
+    const winners = [
+      { name: 'Rahul S.', amount: '₹5,000' },
+      { name: 'Priya K.', amount: '₹2,800' },
+      { name: 'Vikram R.', amount: '₹4,200' },
+      { name: 'Sneha M.', amount: '₹3,100' },
+      { name: 'Arjun D.', amount: '₹6,500' },
+      { name: 'Neha G.', amount: '₹1,900' },
+      { name: 'Karan T.', amount: '₹7,200' },
+      { name: 'Ananya P.', amount: '₹2,400' },
+      { name: 'Rohit S.', amount: '₹8,000' },
+      { name: 'Pooja B.', amount: '₹3,800' },
+      { name: 'Manish L.', amount: '₹4,900' },
+      { name: 'Sara A.', amount: '₹2,200' },
+      { name: 'Deepak N.', amount: '₹5,700' },
+      { name: 'Meera V.', amount: '₹3,300' },
+      { name: 'Gaurav J.', amount: '₹6,100' },
+      { name: 'Kavya R.', amount: '₹1,500' },
+      { name: 'Amit S.', amount: '₹9,400' },
+      { name: 'Riya W.', amount: '₹2,600' },
+      { name: 'Suresh K.', amount: '₹4,000' },
+      { name: 'Divya H.', amount: '₹3,400' },
+      { name: 'Mohan P.', amount: '₹5,200' },
+      { name: 'Lata M.', amount: '₹6,800' },
+      { name: 'Nitin G.', amount: '₹2,900' },
+      { name: 'Swati C.', amount: '₹4,500' },
+      { name: 'Ravi B.', amount: '₹7,800' },
+      { name: 'Isha T.', amount: '₹3,000' },
+      { name: 'Tarun S.', amount: '₹5,900' },
+      { name: 'Garima R.', amount: '₹2,100' },
+      { name: 'Alok V.', amount: '₹8,500' },
+      { name: 'Shruti A.', amount: '₹4,800' },
+      { name: 'Yash P.', amount: '₹10,000' },
+      { name: 'Simran D.', amount: '₹3,600' }
+    ];
+
+    let index = 0;
+    const maxVisible = 6;
+
+    function addWin() {
+      if (index >= winners.length) {
+        index = 0;
+        feed.innerHTML = '';
+      }
+
+      const data = winners[index];
+      index++;
+
+      const line = document.createElement('div');
+      line.className = 'win-line';
+      line.innerHTML = `
+        <span class="check">✓</span>
+        <span class="name">${data.name}</span>
+        <span class="amount">${data.amount}</span>
+      `;
+
+      feed.appendChild(line);
+
+      while (feed.children.length > maxVisible) {
+        feed.removeChild(feed.firstChild);
+      }
+
+      feed.scrollTop = feed.scrollHeight;
+    }
+
+    addWin();
+    setInterval(addWin, 2200);
+  })();
+</script>
+
+</body>
+</html>
